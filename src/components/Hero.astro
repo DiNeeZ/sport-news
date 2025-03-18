@@ -1,0 +1,205 @@
+---
+import { Image } from "astro:assets";
+
+import ball from "../assets/images/basketball.png";
+import player from "../assets/images/player.png";
+import news1 from "../assets/images/hero-card-1.jpg";
+import news2 from "../assets/images/hero-card-2.jpg";
+---
+
+<section class="hero">
+  <div class="hero__container container">
+    <div class="hero__info">
+      <Image
+        src={player}
+        width={player.width}
+        height={player.height}
+        alt="Player"
+      />
+
+      <div class="hero__info-content">
+        <p class="hero__info-text">
+          The EuroLeague Finals Top Scorer is the individual award for the
+          player that gained the highest points in the EuroLeague Finals
+        </p>
+        <a href="/" class="hero__info-button">continue reading</a>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">Top scorer to the final match</h1>
+
+      <div class="hero__news hero-news">
+        <h2 class="hero-news__title">Today</h2>
+        <ul class="hero-news__list">
+          <li class="hero-news__item">
+            <article class="hero-news__card hero-card">
+              <Image
+                src={news1}
+                width={news1.width}
+                height={news1.height}
+                alt={"running woman"}
+                class="hero-card__image"
+              />
+
+              <div class="hero-card__description">
+                <div class="hero-card__description-content">
+                  <span class="hero-card__event">Race98 - 03 June 2023</span>
+                  <h3 class="hero-card__title">
+                    Ethiopian runners took the top four spots.
+                  </h3>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="hero-news__item">
+            <article class="hero-news__card hero-card">
+              <Image
+                src={news2}
+                width={news2.width}
+                height={news2.height}
+                alt={"race car"}
+                class="hero-card__image"
+              />
+
+              <div class="hero-card__description">
+                <div class="hero-card__description-content">
+                  <span class="hero-card__event">INDYCAR - 03 June 2023</span>
+                  <h3 class="hero-card__title">
+                    IndyCar Detroit: Dixon quickest in second practice
+                  </h3>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <Image
+      src={ball}
+      width={ball.width}
+      height={ball.height}
+      class="hero__bg"
+      alt="Basketball"
+    />
+  </div>
+</section>
+
+<style lang="scss">
+  .hero {
+    padding-top: 112px;
+    padding-bottom: 38px;
+
+    &__container {
+      position: relative;
+    }
+
+    &__info {
+      position: absolute;
+      top: -33px;
+      left: 140px;
+    }
+
+    &__info-content {
+      position: absolute;
+      bottom: -32px;
+      right: 104px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      max-width: 364px;
+    }
+
+    &__info-text {
+      font-size: 18px;
+      line-height: 25px;
+    }
+
+    &__info-button {
+      display: flex;
+      padding: 12px 32px;
+      color: #e1e8f0;
+      border-radius: 6px;
+      background-color: var(--primary-dark-color);
+      text-transform: uppercase;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 2rem;
+    }
+
+    &__title {
+      max-width: 470px;
+      font-family: var(--font-title);
+      font-size: 80px;
+      line-height: 65px;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      background: -webkit-linear-gradient(
+        var(--primary-dark-color),
+        var(--neutral-muted-color)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &__bg {
+      position: absolute;
+      top: -102px;
+      left: -102px;
+      mix-blend-mode: luminosity;
+    }
+  }
+
+  .hero-news {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.875rem;
+    }
+  }
+
+  .hero-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+
+    &__description {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      padding: 66px 18px 12px 18px;
+      background: #f2f2f2;
+      background: linear-gradient(
+        180deg,
+        rgb(242, 242, 242, 0) 0%,
+        rgb(242, 242, 242, 1) 100%
+      );
+    }
+
+    &__description-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    &__event {
+      font-size: 0.625rem;
+      color: var(--neutral-dark-color);
+    }
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+</style>

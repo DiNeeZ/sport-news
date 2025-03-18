@@ -1,0 +1,110 @@
+---
+import { Icon } from "astro-icon/components";
+import logo from "../assets/logo.svg";
+---
+
+<header class="header">
+  <nav class="container nav">
+    <a href="/">
+      <img src={logo.src} alt="Astro Sport" />
+    </a>
+
+    <ul class="nav-list">
+      <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/category">Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/trending-news">Trending News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/recent-news">Recent News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/clubs-ranking">Clubs Ranking</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/sports-article">Sports Article</a>
+      </li>
+    </ul>
+
+    <button class="button">
+      <Icon name="search" />
+      Search
+    </button>
+  </nav>
+</header>
+
+<style lang="scss">
+  .header {
+    padding: 0.9375rem 0;
+    background-color: var(--white-color);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.1875rem;
+  }
+
+  .nav-link {
+    position: relative;
+    display: block;
+    padding: 0.625rem;
+    font-size: 0.9375rem;
+    line-height: 2.625rem;
+    color: var(--neutral-dark-color);
+    transition: color 0.15s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: var(--neutral-dark-color);
+      transition: width 0.15s ease-in-out;
+    }
+
+    &.active {
+      color: var(--primary-dark-color);
+    }
+
+    &:hover {
+      color: var(--primary-dark-color);
+
+      &::after {
+        width: 90%;
+      }
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1.25rem 0.75rem 1rem;
+    background-color: var(--neutral-muted-color);
+    font-size: 0.875rem;
+    color: var(--white-color);
+    border-radius: 6px;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: var(--neutral-dark-color);
+    }
+
+    &:focus {
+      outline: 2px solid var(--primary-dark-color);
+      outline-offset: 2px;
+    }
+  }
+</style>

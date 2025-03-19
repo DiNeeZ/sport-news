@@ -1,0 +1,16 @@
+---
+const { variant = "h2" } = Astro.props;
+const allowedTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
+const Tag = allowedTags.includes(variant) ? variant : "h2";
+---
+
+<Tag class="section-title"><slot /></Tag>
+
+<style lang="scss">
+  .section-title {
+    font-family: var(--font-title);
+    font-size: 1.75rem;
+    line-height: 2.375rem;
+    font-weight: 700;
+  }
+</style>

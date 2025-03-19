@@ -1,9 +1,9 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 import "@fontsource-variable/dm-sans";
-import "@fontsource/lato/400.css";
-import "@fontsource/lato/700.css";
+import "@fontsource-variable/oswald";
 
 const { title } = Astro.props;
 
@@ -19,8 +19,31 @@ import "../styles/global.scss";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="body">
     <Header />
-    <slot />
+    <main class="main">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style lang="scss">
+  .body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .main {
+      gap: 1rem;
+    }
+  }
+</style>

@@ -9,25 +9,28 @@ import news2 from "../assets/images/hero-card-2.jpg";
 
 <section class="hero">
   <div class="hero__container container">
-    <div class="hero__info">
-      <Image
-        src={player}
-        width={player.width}
-        height={player.height}
-        alt="Player"
-      />
-
-      <div class="hero__info-content">
-        <p class="hero__info-text">
-          The EuroLeague Finals Top Scorer is the individual award for the
-          player that gained the highest points in the EuroLeague Finals
-        </p>
-        <a href="/" class="hero__info-button">continue reading</a>
-      </div>
-    </div>
-
     <div class="hero__content">
-      <h1 class="hero__title">Top scorer to the final match</h1>
+      <div class="hero__description">
+        <h1 class="hero__title">Top scorer to the final match</h1>
+
+        <div class="hero__info">
+          <Image
+            src={player}
+            width={player.width}
+            height={player.height}
+            alt="Player"
+            class="hero__info-image"
+          />
+
+          <div class="hero__info-content">
+            <p class="hero__info-text">
+              The EuroLeague Finals Top Scorer is the individual award for the
+              player that gained the highest points in the EuroLeague Finals
+            </p>
+            <a href="/" class="hero__info-button">continue reading</a>
+          </div>
+        </div>
+      </div>
 
       <div class="hero__news hero-news">
         <h2 class="hero-news__title">Today</h2>
@@ -94,6 +97,12 @@ import news2 from "../assets/images/hero-card-2.jpg";
       position: relative;
     }
 
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
     &__info {
       position: absolute;
       top: -33px;
@@ -132,10 +141,10 @@ import news2 from "../assets/images/hero-card-2.jpg";
     }
 
     &__title {
-      max-width: 470px;
+      max-width: 410px;
       font-family: var(--font-title);
       font-size: 80px;
-      line-height: 65px;
+      line-height: 70px;
       text-transform: uppercase;
       font-weight: 700;
 
@@ -160,10 +169,20 @@ import news2 from "../assets/images/hero-card-2.jpg";
     flex-direction: column;
     gap: 1.5rem;
 
+    &__title {
+      align-self: start;
+      padding: 0.25rem 1rem;
+      font-size: 1.25rem;
+      color: var(--neutral-muted-color);
+      background-color: var(--neutral-mid-color);
+      border-radius: 3px;
+    }
+
     &__list {
       display: flex;
       flex-direction: column;
       gap: 1.875rem;
+      align-items: start;
     }
   }
 
@@ -171,6 +190,10 @@ import news2 from "../assets/images/hero-card-2.jpg";
     position: relative;
     border-radius: 6px;
     overflow: hidden;
+
+    &__image {
+      width: 100%;
+    }
 
     &__description {
       position: absolute;
@@ -200,6 +223,85 @@ import news2 from "../assets/images/hero-card-2.jpg";
     &__title {
       font-size: 1rem;
       font-weight: 500;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .hero {
+      &__info-content {
+        right: auto;
+        left: 120px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .hero {
+      padding-top: 50px;
+
+      &__info {
+        position: static;
+      }
+
+      &__info-content {
+        position: static;
+      }
+
+      &__info-image {
+        display: none;
+      }
+
+      &__content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      &__content {
+        grid-template-columns: 1fr;
+      }
+
+      &__description {
+        gap: 1rem;
+      }
+    }
+
+    .hero-news {
+      &__list {
+        flex-direction: row;
+      }
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .hero {
+      &__title {
+        font-size: 3.75rem;
+        text-align: center;
+      }
+
+      &__info-content {
+        align-items: center;
+        text-align: center;
+      }
+
+      &__description {
+        align-items: center;
+      }
+    }
+
+    .hero-news {
+      &__list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__item {
+        max-width: 320px;
+        width: 100%;
+      }
     }
   }
 </style>
